@@ -35,6 +35,8 @@ In this section we will be doing univariate analysis and removing outlier/illegi
 # Data Preparation:
 ## 1. Clustering & Segmentation (using KMeans clustering)
 - The main objective was to find a optimal min. distance(Which roughly estimates to the radius of a cluster) between the clusters which we got was 40. 
+![image](https://user-images.githubusercontent.com/22805226/160124329-c905bcbb-28a3-420e-9f63-3712999ce440.png)
+
 ## 2. Time Binning:
 I will be segmenting whole period into segment of 10 min. This will be called as bin. As the time provided is in datetime format which I will converting into UNIX timestamp before binning. </br>
 Here I will be creating two new features:
