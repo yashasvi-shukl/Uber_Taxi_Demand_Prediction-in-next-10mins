@@ -45,11 +45,11 @@ It is a possible that there would be few bins which does not have any pickups. T
   1. Fill the missing value with 0's
   2. Fill the missing values with the avg values
       - Case 1:(values missing at the start)
-          Ex1: \_ \_ \_ x =>ceil(x/4), ceil(x/4), ceil(x/4), ceil(x/4)
-          Ex2: \_ \_ x => ceil(x/3), ceil(x/3), ceil(x/3)
+          1. Ex1: \_ \_ \_ x =>ceil(x/4), ceil(x/4), ceil(x/4), ceil(x/4)
+          2. Ex2: \_ \_ x => ceil(x/3), ceil(x/3), ceil(x/3)
       - Case 2:(values missing in middle)
-          Ex1: x \_ \_ y => ceil((x+y)/4), ceil((x+y)/4), ceil((x+y)/4), ceil((x+y)/4)
-          Ex2: x \_ \_ \_ y => ceil((x+y)/5), ceil((x+y)/5), ceil((x+y)/5), ceil((x+y)/5), ceil((x+y)/5)
+          1. Ex1: x \_ \_ y => ceil((x+y)/4), ceil((x+y)/4), ceil((x+y)/4), ceil((x+y)/4)
+          2. Ex2: x \_ \_ \_ y => ceil((x+y)/5), ceil((x+y)/5), ceil((x+y)/5), ceil((x+y)/5), ceil((x+y)/5)
       - Case 3:(values missing at the end)
-          Ex1: x \_ \_ \_ => ceil(x/4), ceil(x/4), ceil(x/4), ceil(x/4)
-          Ex2: x \_ => ceil(x/2), ceil(x/2)
+          1. Ex1: x \_ \_ \_ => ceil(x/4), ceil(x/4), ceil(x/4), ceil(x/4)
+          2. Ex2: x \_ => ceil(x/2), ceil(x/2)
