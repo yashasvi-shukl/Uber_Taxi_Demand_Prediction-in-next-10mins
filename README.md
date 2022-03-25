@@ -23,3 +23,5 @@ Time-series forecasting and Regression
 ### Performance metrics:
 1. Mean Absolute percentage error.
 2. Mean Squared error.
+
+![image](https://user-images.githubusercontent.com/22805226/160085124-2365227d-f825-4a77-864d-5b40bb8276e0.png)
