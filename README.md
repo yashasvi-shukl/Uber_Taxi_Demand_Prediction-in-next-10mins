@@ -1,5 +1,5 @@
 # NYC Taxi Demand Prediction (in-next-10mins)
-</hr>
+
 ## Data Information:
 
 Ge the data from : http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml </br>
