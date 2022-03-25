@@ -62,20 +62,61 @@ It is a possible that there would be few bins which does not have any pickups. T
         
 # Modeling
 ## Baseline Models:
-</br>
-    Now within modelling, in order to forecast the pickup densities for the months of Jan, Feb and March of 2016 for which I'm using multiple models with two variations:
-        - **Using Ratios** of the 2016 data to the 2015 data i.e  **Rt=P2016t/P2015t **
-        - **Using Previous known values** of the 2016 data itself to predict the future values
-    1. **Simple Moving Averages:**
-        - The First Model used is the Moving Averages Model which uses the previous n values in order to predict the next value. 
-        **Using Ratio Values -  Rt=(Rt−1+Rt−2+Rt−3....Rt−n)/n **. The best window-size obtained after hyperparameter tuning is 3.
-        - Next we use the Moving averages of the 2016 values itself to predict the future value using  **Pt=(Pt−1+Pt−2+Pt−3....Pt−n)/n**
+  Now within modelling, in order to forecast the pickup densities for the months of Jan, Feb and March of 2016 for which I'm using multiple models with two variations:</br>
+  - **Using Ratios** of the 2016 data to the 2015 data i.e  **Rt=P2016t/P2015t**
+  - **Using Previous known values** of the 2016 data itself to predict the future values
+  
+  1. **Simple Moving Averages:**
+  The First Model used is the Moving Averages Model which uses the previous n values in order to predict the next value.
+      - **Using Ratio Values -  Rt=(Rt−1+Rt−2+Rt−3....Rt−n)/n** <br>
+      The best window-size obtained after hyperparameter tuning is 3.
+      - Next we use the Moving averages of the 2016 values itself (i.e., on previous data) to predict the future value using </br>
+      **Pt=(Pt−1+Pt−2+Pt−3....Pt−n)/n** </br>
         The best window-size obtained after hyperparameter tuning is 1.
-    2. **Weighted Moving Averages:**
-        The Moving Avergaes Model used gave equal importance to all the values in the window used, but we know intuitively that the future is more likely to be similar to the latest values and less similar to the older values. 
-        Weighted Averages converts this analogy into a mathematical relationship giving the highest weight while computing the averages to the latest previous value and decreasing weights to the subsequent older ones.
+   2. **Weighted Moving Averages:**
+        The Moving Avergaes Model used gave equal importance to all the values in the window used, but we know intuitively that the future is more likely to be similar to the latest values and less similar to the older values. Weighted Averages converts this analogy into a mathematical relationship giving the highest weight while computing the averages to the latest previous value and decreasing weights to the subsequent older ones.
         - **Weighted Moving Averages using Ratio Values -  Rt=(N∗Rt−1+(N−1)∗Rt−2+(N−2)∗Rt−3....1∗Rt−n)/(N∗(N+1)/2)**
         The best window-size obtained after hyperparameter tuning is 5.
         
         - **using Previous Values - Pt=(N∗Pt−1+(N−1)∗Pt−2+(N−2)∗Pt−3....1∗Pt−n)/(N∗(N+1)/2)** 
         The optimal window-size obatained after hyperparameter tuning is 5.
+  3. **Exponential Weighted Moving Average:**
+      <p>Through weighted averaged we have satisfied the analogy of giving higher weights to the latest value and decreasing weights to the subsequent ones but we still do not know which is the correct weighting scheme as there are infinetly many possibilities in which we can assign weights in a non-increasing order and tune the the hyperparameter window-size. To simplify this process we use Exponential Moving Averages which is a more logical way towards assigning weights and at the same time also using an optimal window-size.
+              In exponential moving averages we use a single hyperparameter alpha  (α)  which is a value between 0 & 1 and based on the value of the hyperparameter alpha the weights and the window sizes are configured. </p>
+              
+        **R′t=α∗Rt−1+(1−α)∗R′t−1**  where alpha range from 0 to 1
+</br>
+===========================================================================================
+</br>
+<h3>Comparison between baseline models</h3>
+Plese Note:- Below comparisons is made using Jan 2015 and Jan 2016 only
+</br></br>
+
+![image](https://user-images.githubusercontent.com/22805226/160114942-f0bee07a-ceeb-48eb-bcaf-cfe184260f99.png)
+</br>
+
+# Regression Models
+1. <h2>Train Test Split:</h2>
+    <p>Before we start predictions using the tree based regression models we take 3 months of 2016 pickup data and split it such that for every region we have 70% data in train and 30% in test, ordered date-wise for every region. As we have observed Exponential Weighted Moving Average is working best of all with window-size of 5. To Get the predictions of exponential moving averages to be used as a feature in cumulative form.
+  
+      I have computed 8 features for every data point that starts from 50th min of the day
+      1. cluster center lattitude
+      2. cluster center longitude
+      3. day of the week 
+      4. f_t_1: number of pickups that are happened previous t-1th 10min intravel
+      5. f_t_2: number of pickups that are happened previous t-2th 10min intravel
+      6. f_t_3: number of pickups that are happened previous t-3th 10min intravel
+      7. f_t_4: number of pickups that are happened previous t-4th 10min intravel
+      8. f_t_5: number of pickups that are happened previous t-5th 10min intravel
+
+2. Model trained are: 
+    - Linear Regression
+    - Random Forest
+    - XGBoost
+
+# Result:
+
+![image](https://user-images.githubusercontent.com/22805226/160117758-4ec5bc60-a196-4d0c-8bdf-37ad642a95d7.png)
+
+      - XGBoost working best of all other models.
+      - Random Forest seems be overfitting somewhat as compared to other models. (Difference between train and test MAPE score)
