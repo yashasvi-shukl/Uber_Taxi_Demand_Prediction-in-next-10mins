@@ -55,7 +55,7 @@ It is a possible that there would be few bins which does not have any pickups. T
           2. Ex2: x \_ => ceil(x/2), ceil(x/2)
       </br>
       <h5>Smoothing Vs Filling</h5>
-      ![image](https://user-images.githubusercontent.com/22805226/160099426-6375110f-47c1-4410-b2e8-b307d5c06324.png)
+![image](https://user-images.githubusercontent.com/22805226/160099426-6375110f-47c1-4410-b2e8-b307d5c06324.png)
 
       <h6>why we choose, these methods and which method is used for which data?</h6>
       Ans: consider we have data of some month in 2015 jan 1st, 10 _ _ _ _ 20, i.e there are 10 pickups that are happened in 1st 10min intravel, 0 pickups happened in 2nd 10mins intravel, 0 pickups happened in 3rd & 4th 10min intravel and 20 pickups happened in 5th 10min intravel. In fill_missing method we replace these values like 10, 0, 0, 0, 20 whereas in smoothing method we replace these values with average as 6,6,6,6,6 ((10+20)/5) if you can check the number of pickups that are happened in the first 50min are same in both cases, but if you can observe that we looking at the future values. when you are using smoothing we are looking at the future number of pickups which might cause a data leakage. So we use smoothing for jan 2015th data since it acts as our training data and we use simple fill_misssing method for 2016th data.
