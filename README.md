@@ -62,16 +62,20 @@ It is a possible that there would be few bins which does not have any pickups. T
         
 # Modeling
 ## Baseline Models:
-
+</br>
     Now within modelling, in order to forecast the pickup densities for the months of Jan, Feb and March of 2016 for which I'm using multiple models with two variations:
-        - Using Ratios of the 2016 data to the 2015 data i.e  Rt=P2016t/P2015t 
-        - Using Previous known values of the 2016 data itself to predict the future values
-    1. Simple Moving Averages:
-        - The First Model used is the Moving Averages Model which uses the previous n values in order to predict the next value. Using Ratio Values -  Rt=(Rt−1+Rt−2+Rt−3....Rt−n)/n. The best window-size obtained after hyperparameter tuning is 3.
-        - Next we use the Moving averages of the 2016 values itself to predict the future value using  Pt=(Pt−1+Pt−2+Pt−3....Pt−n)/n. The best window-size obtained after hyperparameter tuning is 1.
-    2. Weighted Moving Averages:
-        - <p>The Moving Avergaes Model used gave equal importance to all the values in the window used, but we know intuitively that the future is more likely to be similar to the latest values and less similar to the older values. Weighted Averages converts this analogy into a mathematical relationship giving the highest weight while computing the averages to the latest previous value and decreasing weights to the subsequent older ones.
-        Weighted Moving Averages using Ratio Values -  Rt=(N∗Rt−1+(N−1)∗Rt−2+(N−2)∗Rt−3....1∗Rt−n)/(N∗(N+1)/2)
+        - **Using Ratios** of the 2016 data to the 2015 data i.e  **Rt=P2016t/P2015t **
+        - **Using Previous known values** of the 2016 data itself to predict the future values
+    1. **Simple Moving Averages:**
+        - The First Model used is the Moving Averages Model which uses the previous n values in order to predict the next value. 
+        **Using Ratio Values -  Rt=(Rt−1+Rt−2+Rt−3....Rt−n)/n **. The best window-size obtained after hyperparameter tuning is 3.
+        - Next we use the Moving averages of the 2016 values itself to predict the future value using  **Pt=(Pt−1+Pt−2+Pt−3....Pt−n)/n**
+        The best window-size obtained after hyperparameter tuning is 1.
+    2. **Weighted Moving Averages:**
+        The Moving Avergaes Model used gave equal importance to all the values in the window used, but we know intuitively that the future is more likely to be similar to the latest values and less similar to the older values. 
+        Weighted Averages converts this analogy into a mathematical relationship giving the highest weight while computing the averages to the latest previous value and decreasing weights to the subsequent older ones.
+        - **Weighted Moving Averages using Ratio Values -  Rt=(N∗Rt−1+(N−1)∗Rt−2+(N−2)∗Rt−3....1∗Rt−n)/(N∗(N+1)/2)**
         The best window-size obtained after hyperparameter tuning is 5.
-        </p>
-        - 
+        
+        - **using Previous Values - Pt=(N∗Pt−1+(N−1)∗Pt−2+(N−2)∗Pt−3....1∗Pt−n)/(N∗(N+1)/2)** 
+        The optimal window-size obatained after hyperparameter tuning is 5.
