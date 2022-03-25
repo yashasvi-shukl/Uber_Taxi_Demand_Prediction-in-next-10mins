@@ -21,5 +21,5 @@ Time-series forecasting and Regression
 - To solve the above we would be using data collected in Jan - Mar 2015 to predict the pickups in Jan - Mar 2016.
 
 ### Performance metrics:
-> Mean Absolute percentage error.
-> Mean Squared error.
+1. Mean Absolute percentage error.
+2. Mean Squared error.
