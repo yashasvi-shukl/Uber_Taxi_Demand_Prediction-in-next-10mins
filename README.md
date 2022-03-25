@@ -62,6 +62,7 @@ It is a possible that there would be few bins which does not have any pickups. T
         
 # Modeling
 ## Baseline Models:
+
     Now within modelling, in order to forecast the pickup densities for the months of Jan, Feb and March of 2016 for which I'm using multiple models with two variations:
         - Using Ratios of the 2016 data to the 2015 data i.e  Rt=P2016t/P2015t 
         - Using Previous known values of the 2016 data itself to predict the future values
