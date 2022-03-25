@@ -1,4 +1,4 @@
-# NYC Taxi Demand Prediction (in-next-10mins)
+# NYC Taxi Demand Prediction in next 10mins
 
 ## Data Information:
 
