@@ -122,3 +122,6 @@ Plese Note:- Below comparisons is made using Jan 2015 and Jan 2016 only
 
       - XGBoost working best of all other models.
       - Random Forest seems be overfitting somewhat as compared to other models. (Difference between train and test MAPE score)
+      - Baseline model and exponential average model is working so well. There is very slight improvement in MAPE score after using Machine Learning algorithms.
+  
+# Thank you :)
